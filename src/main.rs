@@ -26,6 +26,7 @@ fn main() {
         // 2015
         (2015, 1) => year_2015::day01::run(&inputs::read_first_line(year, day)),
         (2015, 2) => year_2015::day02::run(inputs::read(year, day)),
+        (2015, 3) => year_2015::day03::run(&inputs::read_first_line(year, day)),
         (2015, _) => println!("work in progress..."),
 
         // 2016
