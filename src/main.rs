@@ -1,6 +1,7 @@
 use std::env;
 
 mod common;
+mod year_2015;
 mod year_2017;
 
 extern crate regex;
@@ -23,6 +24,7 @@ fn main() {
 
     match (year, day) {
         // 2015
+        (2015, 1) => year_2015::day01::run(&inputs::read_first_line(year, day)),
         (2015, _) => println!("work in progress..."),
 
         // 2016
