@@ -3,6 +3,8 @@ use std::env;
 mod common;
 mod year_2017;
 
+extern crate regex;
+
 use common::inputs;
 
 fn main() {
@@ -32,6 +34,7 @@ fn main() {
 
         // 2017
         (2017, 1) => year_2017::day01::run(&inputs::read_first_line(year, day)),
+        (2017, 2) => year_2017::day02::run(inputs::read(year, day)),
 
         (_, _) => panic!("Not implemented"),
     }

@@ -3,3 +3,5 @@ name = "adventofcode"
 version = "0.0.1"
 authors = ["Alok Menghrajani <alok@squareup.com>"]
 
+[dependencies]
+regex = "0.2"
