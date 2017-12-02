@@ -1,9 +1,11 @@
 pub fn run(input: &[u8]) {
     let part1 = part1(input);
     println!("part1: {}", part1);
+    assert_eq!(part1, 232);
 
     let part2 = part2(input);
     println!("part2: {}", part2);
+    assert_eq!(part2, 1783);
 }
 
 fn part1(buf: &[u8]) -> i64 {
@@ -37,8 +39,8 @@ fn part2(buf: &[u8]) -> usize {
             panic!("invalid input: {}", buf[i]);
         }
         if floor == -1 {
-            // return the current position when we hit the basement
-            return i;
+            // return the 1-indexed position when we hit the basement
+            return i + 1;
         }
     }
     panic!("Santa never enters basement.");
