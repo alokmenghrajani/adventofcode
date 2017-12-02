@@ -1,0 +1,5 @@
+[package]
+name = "adventofcode"
+version = "0.0.1"
+authors = ["Alok Menghrajani <alok@squareup.com>"]
+
