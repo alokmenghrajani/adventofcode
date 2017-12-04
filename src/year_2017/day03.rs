@@ -13,6 +13,9 @@ pub fn run(input: u64) {
 fn solve_part1(input: u64) -> i64 {
     // for part1, we don't need to store anything. We just "walk" in a spiral, and stop when we
     // reach our input.
+    // https://www.reddit.com/r/adventofcode/comments/7h7ufl/2017_day_3_solutions/dqovogc/ gives
+    // a nice approach. If you implement it, the code will look similar (with a more complex
+    // initial condition) but without the loop.
     let mut pos: (i64, i64) = (0, 0);
     let mut sq = 1;
     let mut len = 1;

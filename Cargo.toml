@@ -5,3 +5,4 @@ authors = ["Alok Menghrajani <alok@squareup.com>"]
 
 [dependencies]
 regex = "0.2"
+rust-crypto = "^0.2"
