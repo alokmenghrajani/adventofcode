@@ -1,14 +1,14 @@
 pub fn run(input: Vec<String>) {
-    let part1 = part1(&input);
-    println!("part1: {}", part1);
+    let part1 = solve_part1(&input);
+    println!("part 1: {}", part1);
     assert_eq!(part1, 1588178);
 
-    let part2 = part2(&input);
-    println!("part2: {}", part2);
+    let part2 = solve_part2(&input);
+    println!("part 2: {}", part2);
     assert_eq!(part2, 3783758);
 }
 
-fn part1(input: &Vec<String>) -> u64 {
+fn solve_part1(input: &Vec<String>) -> u64 {
     let mut sum: u64 = 0;
     for line in input.iter() {
         // split on 'x'
@@ -25,7 +25,7 @@ fn part1(input: &Vec<String>) -> u64 {
     return sum;
 }
 
-fn part2(input: &Vec<String>) -> u64 {
+fn solve_part2(input: &Vec<String>) -> u64 {
     let mut sum: u64 = 0;
     for line in input.iter() {
         // split on 'x'

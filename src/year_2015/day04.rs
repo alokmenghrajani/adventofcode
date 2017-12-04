@@ -4,11 +4,11 @@ use crypto::digest::Digest;
 pub fn run(input: &str) {
     println!("pro-tip: compile with --release!");
     let part1 = solve(input.as_bytes(), 5);
-    println!("part1: {}", part1);
+    println!("part 1: {}", part1);
     assert_eq!(part1, 254575);
 
     let part2 = solve(input.as_bytes(), 6);
-    println!("part2: {}", part2);
+    println!("part 2: {}", part2);
     assert_eq!(part2, 1038736);
 }
 

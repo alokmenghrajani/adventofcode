@@ -2,11 +2,11 @@ use std::collections::HashMap;
 
 pub fn run(input: &[u8]) {
     let part1 = solve_part1(input);
-    println!("part1: {}", part1);
+    println!("part 1: {}", part1);
     assert_eq!(part1, 2565);
 
     let part2 = solve_part2(input);
-    println!("part2: {}", part2);
+    println!("part 2: {}", part2);
     assert_eq!(part2, 2639);
 }
 
