@@ -44,6 +44,7 @@ fn main() {
         (2017, 1) => year_2017::day01::run(&inputs::read_first_line(year, day)),
         (2017, 2) => year_2017::day02::run(inputs::read(year, day)),
         (2017, 3) => year_2017::day03::run(368078),
+        (2017, 4) => year_2017::day04::run(inputs::read(year, day)),
 
         (_, _) => panic!("Not implemented"),
     }
