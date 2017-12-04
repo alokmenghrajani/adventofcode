@@ -40,7 +40,7 @@ fn main() {
         // 2016
         (2016, 1) => year_2016::day01::run(&inputs::grab_local_input(year, day)),
         (2016, 2) => year_2016::day02::run(&inputs::grab_local_input(year, day)),
-        (2016, 3) => year_2016::day03::solve(&inputs::grab_local_input(year, day)),
+        (2016, 3) => year_2016::day03::run(&inputs::grab_local_input(year, day)),
         (2016, 4) => year_2016::day04::solve(&inputs::grab_local_input(year, day)),
         (2016, 5) => year_2016::day05::solve("ojvtpuvg"),
         (2016, 6) => year_2016::day06::solve(&inputs::grab_local_input(year, day)),

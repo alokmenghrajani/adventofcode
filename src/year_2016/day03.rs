@@ -1,20 +1,25 @@
 use regex::Regex;
 
-pub fn solve(input: &str) {
-    assert_eq!(part1("5 10 25\n10 5 25\n5 10 25\n5 10 25\n12 5 10"), 1);
-    println!("part 1: {}", part1(input));
+pub fn run(input: &str) {
+    assert_eq!(solve_part1("5 10 25\n10 5 25\n5 10 25\n5 10 25\n12 5 10"),
+               1);
+    let part1 = solve_part1(input);
+    println!("part 1: {}", part1);
+    assert_eq!(part1, 982);
 
-    assert_eq!(part2("101 301 501\n102 302 502\n103 303 503\n201 401 601\n202 402 602\n203 403 \
-                      603"),
+    assert_eq!(solve_part2("101 301 501\n102 302 502\n103 303 503\n201 401 601\n202 402 \
+                            602\n203 403 603"),
                6);
-    println!("part 2: {}", part2(input));
+    let part2 = solve_part2(input);
+    println!("part 2: {}", part2);
+    assert_eq!(part2, 1826);
 }
 
-fn part1(input: &str) -> usize {
+fn solve_part1(input: &str) -> usize {
     _solve(input, 1)
 }
 
-fn part2(input: &str) -> usize {
+fn solve_part2(input: &str) -> usize {
     _solve(input, 3)
 }
 
