@@ -6,6 +6,7 @@ mod year_2016;
 mod year_2017;
 
 extern crate crypto;
+extern crate fancy_regex;
 extern crate regex;
 
 use common::inputs;
@@ -30,6 +31,7 @@ fn main() {
         (2015, 2) => year_2015::day02::run(inputs::read(year, day)),
         (2015, 3) => year_2015::day03::run(&inputs::read_first_line(year, day)),
         (2015, 4) => year_2015::day04::run("bgvyzdsv"),
+        (2015, 5) => year_2015::day05::run(inputs::read(year, day)),
         (2015, _) => println!("work in progress..."),
 
         // 2016
