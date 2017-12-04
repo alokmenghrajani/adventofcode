@@ -3,8 +3,7 @@
 // From an algorithm point of view, we need to parse the input and look for the first integer i
 // such that (i + disc_number + disc_starting_position) % disc_size == 0, for all discs.
 
-extern crate regex;
-use self::regex::Regex;
+use regex::Regex;
 
 pub fn solve(input: &str) {
     let test_input = "Disc #1 has 5 positions; at time=0, it is at position 4.\nDisc #2 has 2 \
@@ -30,9 +29,9 @@ fn _solve(input: &str) -> usize {
     let discs: Vec<Disc> = re.captures_iter(input)
         .map(|c| {
             Disc {
-                index: c.at(1).unwrap().parse().unwrap(),
-                size: c.at(2).unwrap().parse().unwrap(),
-                start: c.at(3).unwrap().parse().unwrap(),
+                index: c.get(1).unwrap().as_str().parse().unwrap(),
+                size: c.get(2).unwrap().as_str().parse().unwrap(),
+                start: c.get(3).unwrap().as_str().parse().unwrap(),
             }
         })
         .collect();

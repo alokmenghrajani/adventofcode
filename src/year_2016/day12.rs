@@ -13,10 +13,7 @@
 // I found a tutorial by Jonathan Turner, which was very helpful:
 // http://www.jonathanturner.org/2015/12/building-a-simple-jit-in-rust.html
 
-extern crate regex;
-extern crate libc;
-
-use self::regex::Regex;
+use regex::Regex;
 use std::mem;
 use std::ops::{Index, IndexMut};
 
@@ -127,31 +124,31 @@ fn _solve(input: &str, (reg_a, reg_b, reg_c, reg_d): (i64, i64, i64, i64)) -> i6
     // parse input
     for line in input.trim().split('\n') {
         if let Some(cap) = Regex::new(r"^cpy (-?\d+) ([a-d])").unwrap().captures(line) {
-            cmds.push(Cmd::CpyI(cap.at(1).unwrap().parse().unwrap(),
-                                cap.at(2).unwrap().to_string()));
+            cmds.push(Cmd::CpyI(cap.get(1).unwrap().as_str().parse().unwrap(),
+                                cap.get(2).unwrap().as_str().to_string()));
             continue;
         }
         if let Some(cap) = Regex::new(r"^cpy ([a-d]) ([a-d])").unwrap().captures(line) {
-            cmds.push(Cmd::CpyR(cap.at(1).unwrap().to_string(),
-                                cap.at(2).unwrap().to_string()));
+            cmds.push(Cmd::CpyR(cap.get(1).unwrap().as_str().to_string(),
+                                cap.get(2).unwrap().as_str().to_string()));
             continue;
         }
         if let Some(cap) = Regex::new(r"^inc ([a-d])").unwrap().captures(line) {
-            cmds.push(Cmd::IncR(cap.at(1).unwrap().to_string()));
+            cmds.push(Cmd::IncR(cap.get(1).unwrap().as_str().to_string()));
             continue;
         }
         if let Some(cap) = Regex::new(r"^dec ([a-d])").unwrap().captures(line) {
-            cmds.push(Cmd::DecR(cap.at(1).unwrap().to_string()));
+            cmds.push(Cmd::DecR(cap.get(1).unwrap().as_str().to_string()));
             continue;
         }
         if let Some(cap) = Regex::new(r"^jnz (-?\d+) (-?\d+)").unwrap().captures(line) {
-            cmds.push(Cmd::JnzI(cap.at(1).unwrap().parse().unwrap(),
-                                cap.at(2).unwrap().parse().unwrap()));
+            cmds.push(Cmd::JnzI(cap.get(1).unwrap().as_str().parse().unwrap(),
+                                cap.get(2).unwrap().as_str().parse().unwrap()));
             continue;
         }
         if let Some(cap) = Regex::new(r"^jnz ([a-d]) (-?\d+)").unwrap().captures(line) {
-            cmds.push(Cmd::JnzR(cap.at(1).unwrap().to_string(),
-                                cap.at(2).unwrap().parse().unwrap()));
+            cmds.push(Cmd::JnzR(cap.get(1).unwrap().as_str().to_string(),
+                                cap.get(2).unwrap().as_str().parse().unwrap()));
             continue;
         }
         panic!("unknown command");

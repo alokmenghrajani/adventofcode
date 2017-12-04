@@ -7,3 +7,4 @@ authors = ["Alok Menghrajani <alok@squareup.com>"]
 regex = "0.2"
 rust-crypto = "^0.2"
 fancy-regex = "0.1.0"
+lazy_static = "0.1.16"

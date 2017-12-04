@@ -9,6 +9,9 @@ extern crate crypto;
 extern crate fancy_regex;
 extern crate regex;
 
+#[macro_use]
+extern crate lazy_static;
+
 use common::inputs;
 
 fn main() {
@@ -36,11 +39,24 @@ fn main() {
 
         // 2016
         (2016, 1) => year_2016::day01::run(&inputs::grab_local_input(year, day)),
-        (2016, _) => {
-            println!("TODO: move code over from \
-                      https://github.\
-                      com/alokmenghrajani/random_stuff/tree/master/adventofcode/2016")
-        }
+        (2016, 2) => year_2016::day02::solve(&inputs::grab_local_input(year, day)),
+        (2016, 3) => year_2016::day03::solve(&inputs::grab_local_input(year, day)),
+        (2016, 4) => year_2016::day04::solve(&inputs::grab_local_input(year, day)),
+        (2016, 5) => year_2016::day05::solve("ojvtpuvg"),
+        (2016, 6) => year_2016::day06::solve(&inputs::grab_local_input(year, day)),
+        (2016, 7) => year_2016::day07::solve(&inputs::grab_local_input(year, day)),
+        (2016, 8) => year_2016::day08::solve(&inputs::grab_local_input(year, day)),
+        (2016, 9) => year_2016::day09::solve(&inputs::grab_local_input(year, day)),
+        (2016, 10) => year_2016::day10::solve(&inputs::grab_local_input(year, day)),
+        //(2016, 12) => year_2016::day12::solve(&inputs::grab_local_input(year, day)),
+        (2016, 14) => year_2016::day14::solve("qzyelonm"),
+        (2016, 15) => year_2016::day15::solve(&inputs::grab_local_input(year, day)),
+        (2016, 16) => year_2016::day16::solve("01111001100111011"),
+        (2016, 18) => year_2016::day18::solve(&inputs::grab_local_input(year, day)),
+        (2016, 19) => year_2016::day19::solve(3005290),
+        (2016, 20) => year_2016::day20::solve(&inputs::grab_local_input(year, day)),
+        (2016, 21) => year_2016::day21::solve(&inputs::grab_local_input(year, day), "abcdefgh", "fbgdceah"),
+        //(2016, 23) => year_2016::day23::solve(&inputs::grab_local_input(year, day)),
 
         // 2017
         (2017, 1) => year_2017::day01::run(&inputs::read_first_line(year, day)),
@@ -48,6 +64,6 @@ fn main() {
         (2017, 3) => year_2017::day03::run(368078),
         (2017, 4) => year_2017::day04::run(inputs::read(year, day)),
 
-        (_, _) => panic!("Not implemented"),
+        (_, _) => panic!("Not implemented :("),
     }
 }

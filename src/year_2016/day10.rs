@@ -90,22 +90,22 @@ fn _solve(input: &str, value1: usize, value2: usize, bin: usize) -> (usize, usiz
             .unwrap();
     for line in input.trim().split('\n') {
         if let Some(cap) = take.captures(line) {
-            commands.push(Command::Take(cap.at(1).unwrap().parse().unwrap(),
-                                        cap.at(2).unwrap().parse().unwrap()));
+            commands.push(Command::Take(cap.get(1).unwrap().as_str().parse().unwrap(),
+                                        cap.get(2).unwrap().as_str().parse().unwrap()));
             continue;
         }
         if let Some(cap) = give.captures(line) {
-            let src_bot = cap.at(1).unwrap().parse().unwrap();
-            let low_n = cap.at(3).unwrap().parse().unwrap();
+            let src_bot = cap.get(1).unwrap().as_str().parse().unwrap();
+            let low_n = cap.get(3).unwrap().as_str().parse().unwrap();
             let low;
-            if cap.at(2).unwrap() == "bot" {
+            if cap.get(2).unwrap().as_str() == "bot" {
                 low = Dest::Bot(low_n);
             } else {
                 low = Dest::Output(low_n);
             }
-            let high_n = cap.at(5).unwrap().parse().unwrap();
+            let high_n = cap.get(5).unwrap().as_str().parse().unwrap();
             let high;
-            if cap.at(4).unwrap() == "bot" {
+            if cap.get(4).unwrap().as_str() == "bot" {
                 high = Dest::Bot(high_n);
             } else {
                 high = Dest::Output(high_n);

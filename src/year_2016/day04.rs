@@ -27,9 +27,9 @@ fn _solve(input: &str) -> (usize, Option<usize>) {
     for line in input.trim().split("\n") {
         let re = Regex::new(r"([a-z-]*)-(\d+)\[([a-z]{5})\]").unwrap();
         let cap = re.captures(line).unwrap();
-        let room = cap.at(1).unwrap();
-        let id = cap.at(2).unwrap().parse().unwrap();
-        let chksum = cap.at(3).unwrap();
+        let room = cap.get(1).unwrap().as_str();
+        let id = cap.get(2).unwrap().as_str().parse().unwrap();
+        let chksum = cap.get(3).unwrap().as_str();
         if checksum(room) == chksum {
             total += id;
         }

@@ -53,7 +53,8 @@ fn day20iterator(input: &str, min: isize, max: isize) -> Day20Iterator {
     }
     for line in input.trim().split('\n') {
         let cap = P.captures(line).unwrap();
-        ranges.push((cap.at(1).unwrap().parse().unwrap(), cap.at(2).unwrap().parse().unwrap()));
+        ranges.push((cap.get(1).unwrap().as_str().parse().unwrap(),
+                     cap.get(2).unwrap().as_str().parse().unwrap()));
     }
 
     Day20Iterator {

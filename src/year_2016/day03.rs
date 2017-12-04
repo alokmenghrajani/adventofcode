@@ -1,5 +1,4 @@
-extern crate regex;
-use self::regex::Regex;
+use regex::Regex;
 
 pub fn solve(input: &str) {
     assert_eq!(part1("5 10 25\n10 5 25\n5 10 25\n5 10 25\n12 5 10"), 1);
@@ -27,7 +26,7 @@ fn _solve(input: &str, dir: usize) -> usize {
         // TODO: is there a simpler way to parse the input besides using a regexp? The regexp
         // implies some ugly unwrap() + parse() + expect().
         for cap in re.captures_iter(line) {
-            data.push(cap.at(1).unwrap().parse().expect("expecting a number"));
+            data.push(cap.get(1).unwrap().as_str().parse().expect("expecting a number"));
         }
     }
     let mut i = 0;

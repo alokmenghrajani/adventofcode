@@ -51,23 +51,23 @@ fn part1(input: &str, s: &str) -> String {
             static ref MOVE: Regex = Regex::new(r"move position (\d+) to position (\d+)").unwrap();
         }
         if let Some(cap) = SWAP_POS.captures(line) {
-            ops.push(Op::SwapPos(cap.at(1).unwrap().parse().unwrap(),
-                                 cap.at(2).unwrap().parse().unwrap()));
+            ops.push(Op::SwapPos(cap.get(1).unwrap().as_str().parse().unwrap(),
+                                 cap.get(2).unwrap().as_str().parse().unwrap()));
         } else if let Some(cap) = SWAP_LETTER.captures(line) {
-            ops.push(Op::SwapLetter(cap.at(1).unwrap().as_bytes()[0],
-                                    cap.at(2).unwrap().as_bytes()[0]));
+            ops.push(Op::SwapLetter(cap.get(1).unwrap().as_str().as_bytes()[0],
+                                    cap.get(2).unwrap().as_str().as_bytes()[0]));
         } else if let Some(cap) = ROT_LEFT.captures(line) {
-            ops.push(Op::RotLeft(cap.at(1).unwrap().parse().unwrap()));
+            ops.push(Op::RotLeft(cap.get(1).unwrap().as_str().parse().unwrap()));
         } else if let Some(cap) = ROT_RIGHT.captures(line) {
-            ops.push(Op::RotRight(cap.at(1).unwrap().parse().unwrap()));
+            ops.push(Op::RotRight(cap.get(1).unwrap().as_str().parse().unwrap()));
         } else if let Some(cap) = ROT_LETTER.captures(line) {
-            ops.push(Op::RotLetter(cap.at(1).unwrap().as_bytes()[0]));
+            ops.push(Op::RotLetter(cap.get(1).unwrap().as_str().as_bytes()[0]));
         } else if let Some(cap) = REV.captures(line) {
-            ops.push(Op::Rev(cap.at(1).unwrap().parse().unwrap(),
-                             cap.at(2).unwrap().parse().unwrap()));
+            ops.push(Op::Rev(cap.get(1).unwrap().as_str().parse().unwrap(),
+                             cap.get(2).unwrap().as_str().parse().unwrap()));
         } else if let Some(cap) = MOVE.captures(line) {
-            ops.push(Op::Move(cap.at(1).unwrap().parse().unwrap(),
-                              cap.at(2).unwrap().parse().unwrap()));
+            ops.push(Op::Move(cap.get(1).unwrap().as_str().parse().unwrap(),
+                              cap.get(2).unwrap().as_str().parse().unwrap()));
         } else {
             panic!();
         }

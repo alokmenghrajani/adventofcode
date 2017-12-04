@@ -39,14 +39,14 @@ fn _solve(input: &str, recursive: bool) -> usize {
     }
     // Check if we have a character in the A-Z range.
     if let Some(n) = NORMAL.captures(input) {
-        let l = n.at(0).unwrap().len();
+        let l = n.get(0).unwrap().as_str().len();
         return l + _solve(&input[l..], recursive);
     }
     // Check if we have a repetition pattern.
     if let Some(r) = REPEAT.captures(input) {
-        let skip = r.at(0).unwrap().len();
-        let t: usize = r.at(1).unwrap().parse().unwrap();
-        let c: usize = r.at(2).unwrap().parse().unwrap();
+        let skip = r.get(0).unwrap().as_str().len();
+        let t: usize = r.get(1).unwrap().as_str().parse().unwrap();
+        let c: usize = r.get(2).unwrap().as_str().parse().unwrap();
 
         if recursive {
             // for part2, we call the recursion on both pieces

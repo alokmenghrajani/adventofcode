@@ -35,14 +35,14 @@ fn _solve(input: &str) -> String {
 
     for line in input.trim().split("\n") {
         if let Some(cap) = rect.captures(line) {
-            screen.rect(cap.at(1).unwrap().parse().unwrap(),
-                        cap.at(2).unwrap().parse().unwrap());
+            screen.rect(cap.get(1).unwrap().as_str().parse().unwrap(),
+                        cap.get(2).unwrap().as_str().parse().unwrap());
         } else if let Some(cap) = rotate_row.captures(line) {
-            screen.rotate_row(cap.at(1).unwrap().parse().unwrap(),
-                              cap.at(2).unwrap().parse().unwrap());
+            screen.rotate_row(cap.get(1).unwrap().as_str().parse().unwrap(),
+                              cap.get(2).unwrap().as_str().parse().unwrap());
         } else if let Some(cap) = rotate_column.captures(line) {
-            screen.rotate_column(cap.at(1).unwrap().parse().unwrap(),
-                                 cap.at(2).unwrap().parse().unwrap());
+            screen.rotate_column(cap.get(1).unwrap().as_str().parse().unwrap(),
+                                 cap.get(2).unwrap().as_str().parse().unwrap());
         } else {
             panic!("unexpected input");
         }
