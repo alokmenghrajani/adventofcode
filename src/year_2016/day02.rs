@@ -1,12 +1,18 @@
-pub fn solve(input: &str) {
-    assert_eq!(part1("ULL\nRRDDD\nLURDL\nUUUUD"), vec!['1', '9', '8', '5']);
-    println!("part 1: {:?}", part1(input));
+use common::sfy::Sfy;
 
-    assert_eq!(part2("ULL\nRRDDD\nLURDL\nUUUUD"), vec!['5', 'D', 'B', '3']);
-    println!("part 2: {:?}", part2(input));
+pub fn run(input: &str) {
+    assert_eq!(solve_part1("ULL\nRRDDD\nLURDL\nUUUUD"), "1985");
+    let part1 = solve_part1(input);
+    println!("part 1: {}", part1);
+    assert_eq!(part1, "82958");
+
+    assert_eq!(solve_part2("ULL\nRRDDD\nLURDL\nUUUUD"), "5DB3");
+    let part2 = solve_part2(input);
+    println!("part 2: {}", part2);
+    assert_eq!(part2, "B3DB8");
 }
 
-fn part1(input: &str) -> Vec<char> {
+fn solve_part1(input: &str) -> String {
     // I found a smart way to solve today's puzzle. Instead of doing bound checking in each
     // direction, I make the keypad a little bigger and put a placeholder '-' character.
     _solve(input,
@@ -18,7 +24,7 @@ fn part1(input: &str) -> Vec<char> {
              &['-', '-', '-', '-', '-']])
 }
 
-fn part2(input: &str) -> Vec<char> {
+fn solve_part2(input: &str) -> String {
     _solve(input,
            (1, 3),
            &[&['-', '-', '-', '-', '-', '-', '-'],
@@ -30,7 +36,7 @@ fn part2(input: &str) -> Vec<char> {
              &['-', '-', '-', '-', '-', '-', '-']])
 }
 
-fn _solve(input: &str, (start_x, start_y): (usize, usize), keypad: &[&[char]]) -> Vec<char> {
+fn _solve(input: &str, (start_x, start_y): (usize, usize), keypad: &[&[char]]) -> String {
     let mut x = start_x;
     let mut y = start_y;
     let mut r = vec![];
@@ -52,6 +58,5 @@ fn _solve(input: &str, (start_x, start_y): (usize, usize), keypad: &[&[char]]) -
         // at the end of each line, record the keypad value.
         r.push(keypad[y][x]);
     }
-    // note: I should probably return a String instead of Vec<char>.
-    r
+    return r.sfy();
 }
