@@ -2,6 +2,7 @@ use std::env;
 
 mod common;
 mod year_2015;
+mod year_2016;
 mod year_2017;
 
 extern crate crypto;
@@ -32,6 +33,7 @@ fn main() {
         (2015, _) => println!("work in progress..."),
 
         // 2016
+        (2016, 1) => year_2016::day01::run(&inputs::grab_local_input(year, day)),
         (2016, _) => {
             println!("TODO: move code over from \
                       https://github.\
