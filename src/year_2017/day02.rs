@@ -1,11 +1,16 @@
 use regex::Regex;
 
 pub fn run(input: Vec<String>) {
-    part1(&input);
-    part2(&input);
+    let part1 = solve_part1(&input);
+    println!("part 1: {}", part1);
+    assert_eq!(part1, 47136);
+
+    let part2 = solve_part2(&input);
+    println!("part 2: {}", part2);
+    assert_eq!(part2, 250);
 }
 
-fn part1(input: &Vec<String>) {
+fn solve_part1(input: &Vec<String>) -> u64 {
     let mut sum: u64 = 0;
     let re = Regex::new(r"\s+").unwrap();
     for line in input.iter() {
@@ -16,10 +21,10 @@ fn part1(input: &Vec<String>) {
         // the rest is easy, we have max() and min() functions.
         sum += pieces.iter().max().unwrap() - pieces.iter().min().unwrap();
     }
-    println!("part1: {}", sum);
+    return sum;
 }
 
-fn part2(input: &Vec<String>) {
+fn solve_part2(input: &Vec<String>) -> u64 {
     let mut sum: u64 = 0;
     let re = Regex::new(r"\s+").unwrap();
     for line in input.iter() {
@@ -38,5 +43,5 @@ fn part2(input: &Vec<String>) {
             }
         }
     }
-    println!("part2: {}", sum);
+    return sum;
 }

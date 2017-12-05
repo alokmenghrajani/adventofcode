@@ -2,11 +2,11 @@ use std::iter::FromIterator;
 
 pub fn run(input: Vec<String>) {
     let part1 = solve_part1(&input);
-    println!("part1: {}", part1);
+    println!("part 1: {}", part1);
     assert_eq!(part1, 386);
 
     let part2 = solve_part2(&input);
-    println!("part2: {}", part2);
+    println!("part 2: {}", part2);
     assert_eq!(part2, 208);
 }
 
