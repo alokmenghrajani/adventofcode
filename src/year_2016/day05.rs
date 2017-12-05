@@ -1,7 +1,7 @@
 use crypto::md5::Md5;
 use crypto::digest::Digest;
 
-pub fn solve(input: &str) {
+pub fn run(input: &str) {
     println!("pro-tip: compile with --release");
 
     assert_eq!(solve_part1("abc"), "18f47a30");

@@ -1,24 +1,29 @@
-extern crate regex;
-use self::regex::Regex;
+use regex::Regex;
 use std::collections::HashMap;
 
-pub fn solve(input: &str) {
+pub fn run(input: &str) {
     assert_eq!(checksum("aaaaa-bbb-z-y-x"), "abxyz");
     assert_eq!(checksum("a-b-c-d-e-f-g-h"), "abcde");
     assert_eq!(checksum("not-a-real-room"), "oarel");
     assert_ne!(checksum("totally-real-room"), "decoy");
-    println!("part 1: {}", part1(input));
+
+    let part1 = solve_part1(input);
+    println!("part 1: {}", part1);
+    assert_eq!(part1, 137896);
 
     assert_eq!(rotate("qzmt-zixmtkozy-ivhz", 343), "very encrypted name");
-    println!("part 2: {:?}", part2(input));
+
+    let part2 = solve_part2(input);
+    println!("part 2: {}", part2);
+    assert_eq!(part2, 501);
 }
 
-fn part1(input: &str) -> usize {
+fn solve_part1(input: &str) -> usize {
     _solve(input).0
 }
 
-fn part2(input: &str) -> Option<usize> {
-    _solve(input).1
+fn solve_part2(input: &str) -> usize {
+    _solve(input).1.expect("failed to find North Pole object")
 }
 
 fn _solve(input: &str) -> (usize, Option<usize>) {
