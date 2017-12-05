@@ -1,17 +1,21 @@
-extern crate crypto;
-
-use self::crypto::md5::Md5;
-use self::crypto::digest::Digest;
+use crypto::md5::Md5;
+use crypto::digest::Digest;
 
 pub fn solve(input: &str) {
-    assert_eq!(part1("abc"), "18f47a30");
-    println!("part 1: {}", part1(input));
+    println!("pro-tip: compile with --release");
 
-    assert_eq!(part2("abc"), "05ace8e3");
-    println!("part 2: {}", part2(input));
+    assert_eq!(solve_part1("abc"), "18f47a30");
+    let part1 = solve_part1(input);
+    println!("part 1: {}", part1);
+    assert_eq!(part1, "4543c154");
+
+    assert_eq!(solve_part2("abc"), "05ace8e3");
+    let part2 = solve_part2(input);
+    println!("part 2: {}", part2);
+    assert_eq!(part2, "1050cbbd");
 }
 
-fn part1(door: &str) -> String {
+fn solve_part1(door: &str) -> String {
     // compute MD5s until we get 8 hashes with 5 leading zeros.
     // we store each character we find in a String.
     let mut res = String::new();
@@ -28,7 +32,7 @@ fn part1(door: &str) -> String {
     res
 }
 
-fn part2(door: &str) -> String {
+fn solve_part2(door: &str) -> String {
     // compute MD5s until we fill our array.
     let mut res = [b'-'; 8].to_vec();
     let mut found = 0;
@@ -57,8 +61,6 @@ fn unhex(c: u8) -> u8 {
     return c - b'a' + 10;
 }
 
-// md5 computation is very slow if you don't compile the code with --release so use
-// `cargo run 5 --release` for this level.
 // It would be interesting to wrap the md5 computation in a future and see how much parallelism
 // we get out of it.
 fn compute_md5(door: &str, i: i32) -> Option<String> {
