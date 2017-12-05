@@ -19,11 +19,7 @@ fn solve_part1(input: &Vec<String>) -> u64 {
     // process each line of input
     for line in input.iter() {
         // parse line.
-        let cap = re.captures(line);
-        if cap.is_none() {
-            panic!("invalid input: {}", line);
-        }
-        let cap = cap.unwrap();
+        let cap = re.captures(line).expect(&format!("invalid input: {}", line));
         match cap.get(1).unwrap().as_str() {
             "turn on" => process(&mut grid, cap, |_| true),
             "toggle" => process(&mut grid, cap, |e| !e),
