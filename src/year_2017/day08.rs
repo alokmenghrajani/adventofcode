@@ -14,9 +14,10 @@ pub fn run(input: Vec<String>) {
 }
 
 fn solve(input: &Vec<String>) -> (i64, i64) {
-    // use a map to store the registers
+    // Use a map to store the registers.
     let mut registers: HashMap<&str, i64> = HashMap::new();
 
+    // Regular expression to parse each line of input.
     let re = Regex::new(r"(.+?) (inc|dec) ([-0-9]+) if (.+?) (.+?) ([-0-9]+)$").unwrap();
     let mut max = MIN;
     for line in input.iter() {
@@ -29,11 +30,14 @@ fn solve(input: &Vec<String>) -> (i64, i64) {
                 let op = cap.get(2).unwrap().as_str();
                 let val: i64 = cap.get(3).unwrap().as_str().parse().unwrap();
 
+                // Store a function pointer in f. It will either increment or decrement.
                 let f = match op {
                     "inc" => i64::add,
                     "dec" => i64::sub,
                     _ => panic!("invalid op: {}", line),
                 };
+
+                // Similar approach for comparing the register value with the constant.
                 let cond = match cond_op {
                     "<" => i64::lt,
                     ">" => i64::gt,
@@ -46,6 +50,7 @@ fn solve(input: &Vec<String>) -> (i64, i64) {
                 if cond(registers.entry(&cond_left).or_insert(0), &cond_right) {
                     let t = registers.entry(&target).or_insert(0);
                     *t = f(*t, val);
+                    // Check if we need to update max.
                     if *t > max {
                         max = *t;
                     }
