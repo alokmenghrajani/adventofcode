@@ -7,7 +7,7 @@ pub fn run(input: &[u8]) {
 
     let part2 = solve_part2(input);
     println!("part 2: {}", part2);
-    // assert_eq!(part2, 7982);
+    assert_eq!(part2, "96de9657665675b51cd03f0b3528ba26");
 }
 
 fn solve_part1(len: u64, input: &[u8]) -> u64 {
