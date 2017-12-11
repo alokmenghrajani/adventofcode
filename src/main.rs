@@ -8,6 +8,7 @@ mod year_2017;
 extern crate crypto;
 extern crate fancy_regex;
 extern crate regex;
+extern crate serde_json;
 
 #[macro_use]
 extern crate lazy_static;
@@ -41,6 +42,7 @@ fn main() {
         (2015, 9) => year_2015::day09::run(inputs::read(year, day)),
         (2015, 10) => year_2015::day10::run("3113322113"),
         (2015, 11) => year_2015::day11::run("vzbxkghb"),
+        (2015, 12) => year_2015::day12::run(&inputs::read_first_line(year, day)),
         (2015, _) => println!("work in progress..."),
 
         // 2016
