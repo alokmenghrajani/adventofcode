@@ -40,6 +40,7 @@ fn main() {
         (2015, 8) => year_2015::day08::run(inputs::read(year, day)),
         (2015, 9) => year_2015::day09::run(inputs::read(year, day)),
         (2015, 10) => year_2015::day10::run("3113322113"),
+        (2015, 11) => year_2015::day11::run("vzbxkghb"),
         (2015, _) => println!("work in progress..."),
 
         // 2016
