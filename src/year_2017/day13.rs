@@ -1,5 +1,3 @@
-use std::collections::HashSet;
-
 pub fn run(input: Vec<String>) {
     let part1 = solve_part1(&input);
     println!("part 1: {}", part1);
