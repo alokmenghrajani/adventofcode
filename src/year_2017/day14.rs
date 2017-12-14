@@ -1,9 +1,7 @@
 use year_2017::day10::knot_hash;
-use common::grid::Grid;
+use std::collections::HashMap;
 
-#[derive(Debug, Copy, Clone)]
 enum Cell {
-    Free,
     Used,
     Colored,
 }
@@ -18,19 +16,12 @@ pub fn run(input: &str) {
     assert_eq!(part2, 1128);
 }
 
-fn solve_part1(input: &str) -> u64 {
+fn solve_part1(input: &str) -> usize {
     // convert the input into a grid
     let grid = build_grid(input);
     let mut used = 0;
 
-    // iterate over the grid and count the number of used cells
-    for cell in grid.iter() {
-        match *cell {
-            Cell::Used => used += 1,
-            _ => {}
-        }
-    }
-    return used;
+    return grid.len();
 }
 
 fn solve_part2(input: &str) -> u64 {
@@ -43,14 +34,16 @@ fn solve_part2(input: &str) -> u64 {
     // and color it.
     loop {
         let mut found = None;
-        'outer: for i in 0..128 {
-            for j in 0..128 {
-                match grid.get(i, j) {
-                    Cell::Used => {
-                        found = Some((i, j));
-                        break 'outer;
+        {
+            for cell in grid.iter() {
+                match cell {
+                    (&pos, &Cell::Used) => {
+                        found = Some(pos);
+                        break;
                     }
-                    _ => {}
+                    _ => {
+                        continue;
+                    }
                 }
             }
         }
@@ -58,7 +51,7 @@ fn solve_part2(input: &str) -> u64 {
         match found {
             Some(pos) => {
                 colors += 1;
-                flood(&mut grid, pos.0, pos.1);
+                flood(&mut grid, pos);
             }
             None => {
                 // we are done!
@@ -70,34 +63,34 @@ fn solve_part2(input: &str) -> u64 {
     return colors;
 }
 
-fn flood(grid: &mut Grid<Cell>, start_x: isize, start_y: isize) {
-    let mut cells = vec![(start_x, start_y)];
+fn flood(grid: &mut HashMap<(isize, isize), Cell>, start: (isize, isize)) {
+    let mut cells = vec![start];
     while !cells.is_empty() {
         // as long as we have connected cells, pick the first one
         // and color it.
         let cell = cells.pop().unwrap();
-        match grid.get(cell.0, cell.1) {
-            Cell::Free => panic!("free cell in flood"),
-            Cell::Colored => continue,
-            _ => {}
+        match grid.get(&cell) {
+            None => panic!("free cell in flood"),
+            Some(&Cell::Colored) => continue,
+            Some(_) => {}
         }
 
-        grid.set(cell.0, cell.1, Cell::Colored);
+        grid.insert(cell, Cell::Colored);
 
         // look at neighbors and add them to the list of cells to color
         // if they haven't been colored.
         for d in [(1, 0), (-1, 0), (0, -1), (0, 1)].iter() {
             let pos = (cell.0 + d.0, cell.1 + d.1);
-            match grid.get(pos.0, pos.1) {
-                Cell::Used => cells.push(pos),
+            match grid.get(&pos) {
+                Some(&Cell::Used) => cells.push(pos),
                 _ => {}
             }
         }
     }
 }
 
-fn build_grid(input: &str) -> Grid<Cell> {
-    let mut grid: Grid<Cell> = Grid::new(128, 128, Cell::Free);
+fn build_grid(input: &str) -> HashMap<(isize, isize), Cell> {
+    let mut grid: HashMap<(isize, isize), Cell> = HashMap::new();
     for i in 0..128 {
         let hash_input = format!("{}-{}", input, i);
         let hash_output = knot_hash(hash_input.as_bytes());
@@ -109,7 +102,7 @@ fn build_grid(input: &str) -> Grid<Cell> {
             };
             for k in 0..4 {
                 if (val >> (3 - k)) & 1 == 1 {
-                    grid.set(i, j * 4 + k, Cell::Used);
+                    grid.insert((i, j * 4 + k), Cell::Used);
                 }
             }
         }
