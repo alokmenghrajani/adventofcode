@@ -39,6 +39,10 @@ fn solve_part1(len: u64, input: &[u8]) -> u64 {
 }
 
 fn solve_part2(input: &[u8]) -> String {
+    return knot_hash(input);
+}
+
+pub fn knot_hash(input: &[u8]) -> String {
     // append 17, 31, 73, 47, 23 to the input
     let mut inputs = Vec::new();
     inputs.extend_from_slice(input);
