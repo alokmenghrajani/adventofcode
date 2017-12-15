@@ -81,7 +81,8 @@ fn main() {
         (2017, 12) => year_2017::day12::run(inputs::read(year, day)),
         (2017, 13) => year_2017::day13::run(inputs::read(year, day)),
         (2017, 14) => year_2017::day14::run("wenycdww"),
-        
+        (2017, 15) => year_2017::day15::run(591, 393),
+
         (_, _) => panic!("Not implemented :("),
     }
 }
