@@ -40,6 +40,7 @@ fn solve_part2(input: &[u8], iter: usize) -> Vec<u8> {
     return b;
 }
 
+#[allow(non_snake_case)]
 fn transform(moves: String, state: &[u8]) -> Vec<u8> {
     let L = state.len();
     let mut r = Vec::new();

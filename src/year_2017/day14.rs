@@ -19,8 +19,6 @@ pub fn run(input: &str) {
 fn solve_part1(input: &str) -> usize {
     // convert the input into a grid
     let grid = build_grid(input);
-    let mut used = 0;
-
     return grid.len();
 }
 
