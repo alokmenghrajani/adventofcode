@@ -87,6 +87,7 @@ fn main() {
         (2017, 16) => year_2017::day16::run(&inputs::read_first_line(year, day)),
         (2017, 17) => year_2017::day17::run(354),
         (2017, 18) => year_2017::day18::run(inputs::read(year, day)),
+        (2017, 19) => year_2017::day19::run(inputs::read(year, day)),
 
         // Other
         (_, _) => panic!("Not implemented :("),
