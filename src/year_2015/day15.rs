@@ -113,7 +113,7 @@ fn solve_part1_recursive(ingredients: &Vec<Ingredient>,
         if t > *best_value {
             match desired_calories {
                 Some(v) => {
-                    let mut calories: i64 = ingredients.iter()
+                    let calories: i64 = ingredients.iter()
                         .enumerate()
                         .map(|(i, ingredient)| (current[i] as i64) * ingredient.calories)
                         .sum();
